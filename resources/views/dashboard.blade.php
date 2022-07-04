@@ -1,6 +1,7 @@
 @extends('layouts.admin', ['title' => 'Dashboard'])
 
 @section('main')
+
 <div class="row">   
    <div class="col-lg-6 connectedSortable ui-sortable">
       <div class="card">
@@ -117,7 +118,7 @@
    
 
 </div>
-  
+
 @endsection
 
 @section('chart')
@@ -202,7 +203,7 @@
                backgroundColor: '#ff7f27'
             },{
                label: 'Capacidade',
-               data: [14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14],
+               data: new Array(Labels.length).fill(14),
                type: 'line',
                borderColor: '#343434', 
             }],
@@ -214,9 +215,9 @@
             // plugins: [ChartDataLabels],
             options: {
             scales: {
-                  y: {
-                     beginAtZero: true
-                  }
+               y: {
+                  beginAtZero: true
+               }
             }
          }
 
@@ -240,37 +241,19 @@
                label: 'Faturados Hoje',
                data: QtdFat,
                borderWidth: 1,
-               backgroundColor: '#343434',
-               
+               backgroundColor: 'rgb(75, 192, 192)',
             }],
          };
 
          let configBarFat = {
-            type: 'horizontalBar',
+            type: 'bar',
             data: data,
-            plugins: [ChartDataLabels],
+            // plugins: [ChartDataLabels],
             options: {
-               scales: {
-                  xAxes: [{
-                        ticks: {
-                           beginAtZero: true
-                        }
-                  }]
-               },
-               plugins: {
-                  datalabels: {
-                     labels: {
-                        title: {
-                           font: {
-                              weight: 'bold'
-                           }
-                        }
-                     }
-                  }
-               }
+               indexAxis: 'y',
             }
-   
          };
+
 
          new Chart(barFat, configBarFat);
       });
@@ -289,7 +272,8 @@
             datasets: [{
                label: 'Planejadas',
                data: QtdPln,
-               backgroundColor: Samples.utils.transparentize(Samples.utils.color(parseInt(Samples.utils.rand(1,10))), '0.5'), 
+               backgroundColor: 'rgba(255, 99, 132, 0.2)', 
+               borderColor: 'rgb(255, 99, 132)',
                borderWidth: 1,
             }],
          };

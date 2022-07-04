@@ -21,6 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/piloto/{recurso}', [\App\Http\Controllers\RecursoController::class, 'index'])->name('recurso');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
