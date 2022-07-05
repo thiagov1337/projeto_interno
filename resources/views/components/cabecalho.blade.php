@@ -60,9 +60,11 @@
         </div>
         <div class="col-sm-4 card">
             <div class="row">
-                <select class="form-control m-2" onchange="selectOperador('operador51');" name="NumCad" id="selectNumCad" style="font-weight: bold;">
+                <select class="form-control m-2" style="font-weight: bold;">
                     <option value="0" selected="true" disabled="">SELECIONE O OPERADOR</option>
-                    <option selected="" value="387">387 - MONTAGEM INTERMEDIARIA</option>
+                    @foreach ($operadores as $operador)
+                        <option value="{{ $operador->usu_numcad }}">{{ $operador->usu_numcad }} - {{ $operador->nomope }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="row">

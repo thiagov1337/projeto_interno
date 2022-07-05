@@ -3,7 +3,7 @@
 
 @section('content')
     <span class="float-right fa-solid h4 m-2 text-danger h4"> Pedir ajuda <i class="fa-solid fa-triangle-exclamation h4 text-danger"></i></span>
-    <h1 style="font-family: Consolas;">{{$recurso->id}} - {{$recurso->descricao}}</h1> 
+    <h1 style="font-family: Consolas;">{{$recurso->CodCre}} - {{$recurso->descricao}}</h1> 
     <div class="card" data-spy="scroll" id="inicio">
         <div class="card-header">
             Apontamento

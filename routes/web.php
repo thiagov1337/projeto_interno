@@ -26,7 +26,6 @@ Route::get('/dashboard', function () {
 /* apontamento */
 Route::prefix('/Apontamento')->group(function(){
     Route::get('/{recurso}',[\App\Http\Controllers\RecursoController::class, 'index']);
-
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
