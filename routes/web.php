@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,9 +23,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/piloto/{recurso}', [\App\Http\Controllers\RecursoController::class, 'index'])->name('recurso');
+/* apontamento */
+Route::prefix('/Apontamento')->group(function(){
+    Route::get('/{recurso}',[\App\Http\Controllers\RecursoController::class, 'index']);
 
-Auth::routes();
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

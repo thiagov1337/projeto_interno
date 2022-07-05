@@ -15,8 +15,7 @@ class RecursoController extends Controller
 
     public function index(Request $request)
     {
-        $ordens = $this->repository->listarOrdens($request->recurso);
-        $ordens = json_decode($ordens->content());
-        return view('piloto', ['ordens' => $ordens, 'recurso' => $request->recurso]);
+        $info = json_decode($this->repository->loadView($request->recurso)->content());
+        return view('piloto', ['ordens' => $info->ordens, 'recurso' => $info->recurso]);
     }
 }
