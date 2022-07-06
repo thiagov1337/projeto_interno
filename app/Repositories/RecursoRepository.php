@@ -16,6 +16,7 @@ class RecursoRepository
     
     public function loadView($recurso)
     {
+        
         $recurso = $this->mysql2->selectOne('SELECT CodCre FROM noticias.ControleTurno WHERE CodCre = ?', [$recurso]);
         if($recurso){
             $recurso->descricao = 'DESCRIÇÃO RECURSO'; // Criar coluna para descrição 
