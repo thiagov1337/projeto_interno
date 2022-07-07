@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class RecursoController extends Controller
 {
     private $repository;
+
     public function __construct(RecursoRepository $repository)
     {
         $this->repository = $repository;

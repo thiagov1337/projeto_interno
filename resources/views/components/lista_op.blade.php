@@ -14,7 +14,7 @@
    </thead>
    <tbody>
       @foreach ($ordens as $orden)
-      <tr>
+      <tr onclick="selecionar({{ $orden->numorp }}, '{{ $orden->codori }}')">
          <td class=""><strong>{{ $orden->numpri }}</strong></td>
          <td class=""><strong><a target="_blank" href="">{{ $orden->codori }} - {{ $orden->numorp }}</a></strong></td>
          <td class=""><strong>{{ $orden->codpro }}</strong> - {{ $orden->despro }}</td>

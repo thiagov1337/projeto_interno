@@ -12,3 +12,8 @@
         @include('components/lista_op', ['ordens' => $ordens])
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/apontamento.js') }}"></script>
+@endsection
+

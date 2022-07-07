@@ -16,7 +16,6 @@ class RecursoRepository
     
     public function loadView($recurso)
     {
-        
         $recurso = $this->mysql2->selectOne('SELECT CodCre FROM noticias.ControleTurno WHERE CodCre = ?', [$recurso]);
         if($recurso){
             $recurso->descricao = 'DESCRIÇÃO RECURSO'; // Criar coluna para descrição 
@@ -39,18 +38,16 @@ class RecursoRepository
 
             $select = "SELECT OCR.USU_NUMCAD, OPE.NOMOPE 
                         FROM sapprod.USU_T900OCR OCR, sapprod.E906OPE OPE
-                            WHERE OCR.USU_CODCRE in ('{$recurso->CodCre}')
-                            AND OCR.USU_SITOPR = 'A'	
-                            AND OCR.USU_NUMCAD = OPE.NUMCAD
-                            AND OCR.USU_CODEMP = OPE.CODEMP
-                            ORDER BY USU_NUMCAD";
+                        WHERE OCR.USU_CODCRE in ('{$recurso->CodCre}')
+                        AND OCR.USU_SITOPR = 'A'	
+                        AND OCR.USU_NUMCAD = OPE.NUMCAD
+                        AND OCR.USU_CODEMP = OPE.CODEMP
+                        ORDER BY USU_NUMCAD";
 
             $operadores = $this->oracle->select($select);
         
             return response(['ordens' => $ordens, 'recurso' => $recurso, 'operadores' => $operadores]);
         }
-        
-        echo "Recurso não encontrado"; die();
-    
+        abort(404);
     }
 }

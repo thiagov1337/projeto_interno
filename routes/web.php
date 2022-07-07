@@ -36,3 +36,6 @@ Route::get('/chartPCM', [App\Http\Controllers\ChartController::class, 'chartPCM'
 Route::get('/chartFaturado', [App\Http\Controllers\ChartController::class, 'chartFaturado']);
 Route::get('/chartMensal', [App\Http\Controllers\ChartController::class, 'chartMensal']);
 Route::get('/chartMeta', [App\Http\Controllers\ChartController::class, 'chartMeta']);
+
+/* ordem */
+Route::get('/ordem', [App\Http\Controllers\OrdemController::class, 'showOrdem']);
