@@ -3,20 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\RecursoRepository;
+use App\Repositories\OrdemRepository;
+use App\Repositories\OperadorRepository;
 use Illuminate\Http\Request;
 
 class RecursoController extends Controller
 {
-    private $repository;
+    private $repositoryRecurso;
+    private $repositoryOperador;
+    private $repositoryOrdem;
 
-    public function __construct(RecursoRepository $repository)
+    public function __construct(RecursoRepository $repositoryRecurso, OrdemRepository $repositoryOrdem, OperadorRepository $repositoryOperador)
     {
-        $this->repository = $repository;
+        $this->repositoryRecurso = $repositoryRecurso;
+        $this->repositoryOrdem = $repositoryOrdem;
+        $this->repositoryOperador = $repositoryOperador;
     }
 
     public function index(Request $request)
     {
-        $info = json_decode($this->repository->loadView($request->recurso)->content());
-        return view('piloto', ['ordens' => $info->ordens, 'recurso' => $info->recurso, 'operadores' => $info->operadores]);
+        $recurso = ($this->repositoryRecurso->getRecurso($request->recurso));
+        $operadores = ($this->repositoryOperador->getOperadoresByRecurso($request->recurso));
+        $ordens = ($this->repositoryOrdem->getOrdensByRecurso($request->recurso));
+
+        return view('piloto', ['recurso' => $recurso , 'operadores' => $operadores, 'ordens' => $ordens]);
     }
 }

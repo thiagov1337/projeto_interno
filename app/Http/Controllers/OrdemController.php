@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\OrdemRepository;
 
+use App\Models\Senior\Ordem;
+
 class OrdemController extends Controller
 {
     private $repository;
@@ -20,4 +22,8 @@ class OrdemController extends Controller
     }
 
     
+    public function ordem(Ordem $ordem)
+    {
+        
+    }
 }

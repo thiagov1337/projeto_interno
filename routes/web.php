@@ -24,8 +24,13 @@ Route::get('/dashboard', function () {
 });
 
 /* apontamento */
+
+// Route::prefix('/Apontamento')->group(function(){
+//     Route::get('/{recurso}', [\App\Http\Controllers\RecursoController::class, 'index']);
+// });
+
 Route::prefix('/Apontamento')->group(function(){
-    Route::get('/{recurso}',[\App\Http\Controllers\RecursoController::class, 'index']);
+    Route::get('/{recurso}', [\App\Http\Controllers\ViewApontamento::class, 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -38,4 +43,7 @@ Route::get('/chartMensal', [App\Http\Controllers\ChartController::class, 'chartM
 Route::get('/chartMeta', [App\Http\Controllers\ChartController::class, 'chartMeta']);
 
 /* ordem */
-Route::get('/ordem', [App\Http\Controllers\OrdemController::class, 'showOrdem']);
+Route::get('/ordem',  [App\Http\Controllers\OrdemController::class, 'showOrdem']);
+Route::get('/ordens', [App\Http\Controllers\OrdemController::class, 'ordensByRecurso']);
+
+/* */
